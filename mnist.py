@@ -40,7 +40,8 @@ def upload_file():
             img = image.load_img(filepath, target_size=(image_size,image_size))
             img = image.img_to_array(img)
             data = np.array([img])
-            data = data/255.0
+            #data = data/255
+            data = data
             #変換したデータをモデルに渡して予測する
             result = model.predict(data)[0]
             #predicted = result.argmax()
