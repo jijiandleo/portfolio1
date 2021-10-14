@@ -7,8 +7,8 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 
 
-classes = ["0","1","2","3","4","5","6","7","8","9"]
-image_size = 28
+#classes = ["0","1","2","3","4","5","6","7","8","9"]
+image_size = 100
 
 UPLOAD_FOLDER = "uploads"
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
@@ -37,13 +37,13 @@ def upload_file():
             filepath = os.path.join(UPLOAD_FOLDER, filename)
 
             #受け取った画像を読み込み、np形式に変換
-            img = image.load_img(filepath, grayscale=True, target_size=(image_size,image_size))
+            img = image.load_img(filepath, target_size=(image_size,image_size))
             img = image.img_to_array(img)
             data = np.array([img])
             #変換したデータをモデルに渡して予測する
-            result = model.predict(data)[0]
-            predicted = result.argmax()
-            pred_answer = "これは " + classes[predicted] + " です"
+            result = model.predict(data)
+            #predicted = result.argmax()
+            pred_answer = "これは " + result + " です"
 
             return render_template("index.html",answer=pred_answer)
 
@@ -53,3 +53,5 @@ def upload_file():
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 8080))
     app.run(host ='0.0.0.0',port = port)
+#if __name__ == "__main__":
+   # app.run()
