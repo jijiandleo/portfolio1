@@ -1,14 +1,14 @@
 header {
-    background-color: #76B55B;
-    height: 60px;
-    margin: -8px;
+    background-color: #5bb2b5;
+    height: 80px;
+    margin: -10px;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
 }
 
 .header-logo {
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-size: 25px;
     margin: 15px 25px;
 }
